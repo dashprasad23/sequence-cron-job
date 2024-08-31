@@ -7,8 +7,20 @@ import axios from 'axios';
 export default async ({ req, res, log, error }) => {
   const { actionBlockId, time } = req.payload;
 
+   const date = new Date(time);
+
+    // Extract components for cron expression
+    const minute = date.getMinutes();
+    const hour = date.getHours();
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // Months are 0-based, so add 1
+    const dayOfWeek = '*'; // Use '*' to run on all days of the week
+
+    // Create the cron expression
+    const cronExpression = `${minute} ${hour} ${day} ${month} ${dayOfWeek}`;
+
   // Schedule the cron job
-  cron.schedule(time, async () => {
+  cron.schedule(cronExpression, async () => {
     try {
       // Perform the actions based on the actionBlockId
       // ...
