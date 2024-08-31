@@ -5,7 +5,7 @@ import axios from 'axios';
 // This is your Appwrite function
 // It's executed each time we get a request
 export default async ({ req, res, log, error }) => {
-  log('Request:', req.body);
+  log(req.body);
   const { actionBlockId, time } = req.payload;
   log('Request:', req);
 
