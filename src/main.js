@@ -19,7 +19,7 @@ export default async ({ req, res, log, error }) => {
 
     // Create the cron expression
     const cronExpression = `${minute} ${hour} ${day} ${month} ${dayOfWeek}`;
-
+     log(cronExpression)
   // Schedule the cron job
   cron.schedule(cronExpression, async () => {
     try {
