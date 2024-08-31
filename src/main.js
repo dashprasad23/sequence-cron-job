@@ -6,8 +6,7 @@ import axios from 'axios';
 // It's executed each time we get a request
 export default async ({ req, res, log, error }) => {
   log(req.body);
-  const { actionBlockId, time } = req.payload;
-  log('Request:', req);
+  const { actionBlockId, time } = req.body;
 
    const date = new Date(time);
 
